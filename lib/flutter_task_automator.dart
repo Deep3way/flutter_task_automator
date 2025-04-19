@@ -1,3 +1,5 @@
+// lib/flutter_task_automator.dart
+
 /// The public API for the flutter_task_automator package.
 ///
 /// This package provides utilities for scheduling and managing asynchronous tasks
@@ -8,6 +10,8 @@
 /// - [Task]: The interface for executable tasks.
 /// - [AutomatedTask]: A configurable task with properties like periodicity and retries.
 /// - [TaskScheduler]: Manages and schedules tasks.
-export 'src/automated_task.dart';
+library flutter_task_automator;
+
 export 'src/task.dart';
+export 'src/automated_task.dart';
 export 'src/task_scheduler.dart';

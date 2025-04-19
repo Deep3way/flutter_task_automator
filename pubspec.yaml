@@ -1,6 +1,6 @@
 name: flutter_task_automator
 description: "A Flutter library for automating repetitive tasks with scheduling, prioritization, and error handling."
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/Deep3way/flutter_task_automator
 repository: https://github.com/Deep3way/flutter_task_automator
 issue_tracker: https://github.com/Deep3way/flutter_task_automator/issues

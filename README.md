@@ -17,7 +17,7 @@ Add the following to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_task_automator: ^1.0.0
+  flutter_task_automator: ^1.1.0
 ```
 
 Then run:
