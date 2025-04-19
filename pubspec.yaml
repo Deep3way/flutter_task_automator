@@ -1,7 +1,9 @@
 name: flutter_task_automator
-description: "A new Flutter package project."
-version: 0.0.1
-homepage:
+description: "A Flutter library for automating repetitive tasks with scheduling, prioritization, and error handling."
+version: 1.0.0
+homepage: https://github.com/Deep3way/flutter_task_automator
+repository: https://github.com/Deep3way/flutter_task_automator
+issue_tracker: https://github.com/Deep3way/flutter_task_automator/issues
 
 environment:
   sdk: '>=3.3.1 <4.0.0'
@@ -15,13 +17,17 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  test: ^1.16.0
+  mockito: ^5.4.4
+  build_runner: ^2.4.8
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
-
+  uses-material-design: true
   # To add assets to your package, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

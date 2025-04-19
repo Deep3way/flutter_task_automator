@@ -1,3 +1,8 @@
-## 0.0.1
+#### `CHANGELOG.md`
 
-* TODO: Describe initial release.
+```markdown
+
+
+## 1.0.0
+- Initial release with task scheduling, prioritization, and error handling.
+- Added unit tests and example usage.

@@ -1,39 +1,109 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Flutter Task Automator 🚀
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+A Flutter library for automating repetitive tasks with scheduling, prioritization, and error
+handling. Simplify tasks like periodic API polling, data syncing, or UI updates in your Flutter
+applications.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## Features ✨
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+- ⏰ **Scheduled Execution**: Run tasks periodically or as one-time operations.
+- 🔢 **Task Prioritization**: Control execution order with priority settings.
+- 🛡️ **Error Handling**: Configure retries for failed tasks.
+- 🪶 **Lightweight**: Minimal dependencies for easy integration.
 
-## Features
+## Installation 📦
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Add the following to your `pubspec.yaml`:
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+```yaml
+dependencies:
+  flutter_task_automator: ^1.0.0
 ```
 
-## Additional information
+Then run:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```bash
+flutter pub get
+```
+
+## Usage 🛠️
+
+```dart
+import 'package:flutter_task_automator/flutter_task_automator.dart';
+
+void main() async {
+  final scheduler = TaskScheduler();
+
+  // Define a periodic task
+  final periodicTask = AutomatedTask(
+    id: 'api_poll',
+    task: () async {
+      if (kDebugMode) {
+        print('Polling API at ${DateTime.now()}');
+      }
+      // Simulate API call
+      await Future.delayed(const Duration(milliseconds: 100));
+    },
+    interval: const Duration(seconds: 2),
+    priority: 1,
+    retryOnFailure: true,
+    maxRetries: 2,
+  );
+
+  // Define a one-time task
+  final oneTimeTask = AutomatedTask(
+    id: 'data_sync',
+    task: () async {
+      if (kDebugMode) {
+        print('Syncing data at ${DateTime.now()}');
+      }
+      // Simulate data sync
+      await Future.delayed(const Duration(milliseconds: 100));
+    },
+    priority: 2,
+  );
+
+  try {
+    // Add tasks to scheduler
+    scheduler.addTask(periodicTask);
+    scheduler.addTask(oneTimeTask);
+
+    // Wait to observe task execution
+    await Future.delayed(const Duration(seconds: 5));
+  } catch (e, stackTrace) {
+    if (kDebugMode) {
+      print('Error during task execution: $e\n$stackTrace');
+    }
+  } finally {
+    // Stop all tasks
+    scheduler.stopAllTasks();
+    if (kDebugMode) {
+      print('All tasks stopped');
+    }
+  }
+}
+```
+
+## Usage Roadmap 🗺️
+
+- 🔄 **Task Dependencies**: Enable tasks to wait for others to complete.
+- 📊 **Task Monitoring**: Add callbacks for success, failure, or retry events.
+- ⚙️ **Pause/Resume**: Support pausing and resuming individual tasks.
+- 🌐 **Background Tasks**: Integrate with Flutter’s background processing.
+- 📚 **More Examples**: Include Flutter-specific examples, like REST API syncing.
+
+## Running Tests ✅
+
+To run the tests, ensure `mockito` is included in your `dev_dependencies` and use:
+
+```bash
+flutter test
+```
+
+## Contributing 🤝
+
+Contributions are welcome! Please open an issue or submit a pull request on GitHub.
+
+## License 📜
+
+MIT License
